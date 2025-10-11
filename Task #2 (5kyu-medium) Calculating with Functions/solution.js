@@ -3,55 +3,38 @@ function numberGenerator(num) {
     return action ? action(num) : num;
   };
 }
-const zero = numberGenerator(0);
-const one = numberGenerator(1);
-const two = numberGenerator(2);
-const three = numberGenerator(3);
-const four = numberGenerator(4);
-const five = numberGenerator(5);
-const six = numberGenerator(6);
-const seven = numberGenerator(7);
-const eight = numberGenerator(8);
-const nine = numberGenerator(9);
 
-// function actionGenerator(action) {
-//   if (!action) return;
-// }
-
-function plus(rightOperand) {
-  if (!validateOperand(rightOperand)) return;
-  return function (leftOperand) {
-    return leftOperand + rightOperand;
-  };
+const orderedNumbers = [];
+function populateNumbers() {
+  for (let i = 0; i <= 9; i++) {
+    orderedNumbers.push(numberGenerator(i));
+  }
 }
-function minus(rightOperand) {
-  if (!validateOperand(rightOperand)) return;
-  return function (leftOperand) {
-    return leftOperand - rightOperand;
-  };
-}
-
-function times(rightOperand) {
-  if (!validateOperand(rightOperand)) return;
-  return function (leftOperand) {
-    return leftOperand * rightOperand;
-  };
-}
-
-function dividedBy(rightOperand) {
-  if (!validateOperand(rightOperand)) return;
-  return function (leftOperand) {
-    return Math.floor(leftOperand / rightOperand);
-  };
-}
+populateNumbers();
+const [zero, one, two, three, four, five, six, seven, eight, nine] =
+  orderedNumbers;
 
 function validateOperand(operand) {
-  const isOperandInRange = operand >= 0 && operand <= 9;
   const isOperandExistingValue = operand !== null && operand !== undefined;
+  const isOperandInRange = operand >= 0 && operand <= 9;
 
   if (isOperandInRange && isOperandExistingValue) return true;
   return false;
 }
+
+function actionGenerator(operation) {
+  return function (rightOperand) {
+    if (!validateOperand(rightOperand)) return;
+    return function (leftOperand) {
+      return operation(leftOperand, rightOperand);
+    };
+  };
+}
+
+const plus = actionGenerator((a, b) => a + b);
+const minus = actionGenerator((a, b) => a - b);
+const times = actionGenerator((a, b) => a * b);
+const dividedBy = actionGenerator((a, b) => Math.floor(a / b));
 
 console.log(seven(times(five()))); //  must return 35
 console.log(four(plus(nine()))); //  must return 13
