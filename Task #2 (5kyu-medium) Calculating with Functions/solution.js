@@ -15,7 +15,8 @@ const [zero, one, two, three, four, five, six, seven, eight, nine] =
   orderedNumbers;
 
 function validateOperand(operand) {
-  const isOperandExistingValue = operand !== null && operand !== undefined;
+  const isOperandExistingValue =
+    operand !== null && operand !== undefined && operand !== NaN;
   const isOperandInRange = operand >= 0 && operand <= 9;
 
   if (isOperandInRange && isOperandExistingValue) return true;
@@ -26,6 +27,7 @@ function actionGenerator(operation) {
   return function (rightOperand) {
     if (!validateOperand(rightOperand)) return;
     return function (leftOperand) {
+      if (!validateOperand(leftOperand)) return;
       return operation(leftOperand, rightOperand);
     };
   };
