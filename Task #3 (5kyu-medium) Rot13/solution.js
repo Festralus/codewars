@@ -1,4 +1,4 @@
-let X = "Test AaZzKk";
+let X = "AaZzKk";
 
 // SOLUTION #1
 
@@ -67,4 +67,6 @@ function checkCapitalLetters(l) {
 //   return c >= 65 && c <= 90;
 // }
 
-console.log(rot13(X));
+console.log(rot13(X)); // Should return NnMmXx
+console.log(rot13(test)); // Should return grfg
+console.log(rot13(Test)); // Should return Grfg

@@ -15,7 +15,7 @@ function generateHashtag(str) {
   return hashtagAdded.length > 140 ? false : hashtagAdded;
 }
 
-console.log(generateHashtag(input));
+console.log(generateHashtag(input)); // Example
 console.log(generateHashtag("")); // Expected an empty string to return false
 console.log(generateHashtag("Codewars is nice")); // Should capitalize first letters of words.
 console.log(generateHashtag("code" + " ".repeat(140) + "wars")); // #CodeWars
