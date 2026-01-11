@@ -12,3 +12,10 @@ console.log(
     ["lively", "alive", "harp", "sharp", "armstrong"]
   )
 ); // expect ["live", "strong"]
+
+console.log(
+  inArray(
+    ["tarp", "mice", "bull"],
+    ["lively", "alive", "harp", "sharp", "armstrong"]
+  )
+); // expect []
