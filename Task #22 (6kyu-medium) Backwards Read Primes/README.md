@@ -1,0 +1,38 @@
+# Backwards Read Primes - 6kyu-medium
+
+## Instructions
+
+Backwards-read-primes are primes that when read backwards in base 10 (from right to left) are a different prime. (This rules out primes which are palindromes.)
+
+Examples:
+
+13 17 31 37 71 73
+13 is such because it's prime and read from right to left writes 31 which is prime too. Same for the others.
+
+Task
+Find all Backwards-read-primes between two positive given numbers (both inclusive), the second one always being greater than or equal to the first one. The resulting array or the resulting string will be ordered following the natural order of the prime numbers.
+
+Notes
+Forth: Return only the first backwards-read prime between start and end or 0 if you don't find any
+Ruby: Don't use the Prime class, it's disabled.
+
+### Examples
+
+```
+  (start = 2, end = 100) => [13, 17, 31, 37, 71, 73, 79, 97]
+  (start = 9900, end = 10000) => [9923, 9931, 9941, 9967]
+  (start = 501, end = 599) => []
+```
+
+## Sample tests
+
+```
+const Test = require('@codewars/test-compat');
+
+describe("Tests", () => {
+  it("test", () => {
+var a = [9923, 9931, 9941, 9967]
+Test.assertSimilar(backwardsPrime(9900, 10000), a)
+  });
+});
+```
