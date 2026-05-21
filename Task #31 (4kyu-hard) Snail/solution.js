@@ -1,6 +1,23 @@
 function snail(array) {
-  // first option - to follow the snail pattern, write out passed elements, changing them to smth unique to be "a detectable wall"
-  // second option - to follow the snail pattern, write out passed elements, deleting them
+  let result = [];
+
+  while (array.length > 0) {
+    result.push(...array.shift());
+
+    for (let i = 0; i < array.length; i++) {
+      result.push(array[i].pop());
+    }
+
+    if (array.length > 0) {
+      result.push(...array.pop().reverse());
+    }
+
+    for (let i = array.length - 1; i >= 0; i--) {
+      result.push(array[i].shift());
+    }
+  }
+
+  return result;
 }
 
 console.log(
@@ -11,7 +28,7 @@ console.log(
   ]),
 ); // expect [1, 2, 3, 6, 9, 8, 7, 4, 5]
 console.log(
-  solution([
+  snail([
     [1, 2, 3, 4, 5, 6],
     [20, 21, 22, 23, 24, 7],
     [19, 32, 33, 34, 25, 8],
