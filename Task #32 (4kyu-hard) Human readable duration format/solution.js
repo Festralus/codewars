@@ -22,7 +22,7 @@ function formatDuration(seconds) {
     }
   }
 
-  if (seconds === 0) return now;
+  if (seconds === 0) return "now";
   return date.length > 1
     ? date.slice(0, -1).join(", ") + " and " + date.slice(-1)
     : date[0];
